@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fudi</title>
+  <link rel="stylesheet/less" type="text/css" href="./style.less">
+  <script src="https://cdn.jsdelivr.net/npm/less@4.2.0"></script>
+</head>
+
+<body>
+
+  <div class="page">
+    <div class="container">
+      <header class="page-header">
+        <a href="#" class="page-header__logo">
+          <img src="./img/img_logo.png" alt="Fudi">
+        </a>
+
+        <nav class="page-header__nav">
+          <a href="#" class="page-header__link">log in</a>
+          <a href="#" class="page-header__link">sign up</a>
+
+          <button class="page-header__navicon" type="button" title="Menu" aria-label="Menu">
+            <span></span>
+          </button>
+
+          <ul class="dropdown">
+            <li><a href="#">Пункт 1</a></li>
+            <li><a href="#">Пункт 2</a></li>
+            <li><a href="#">Пункт 3</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <div class="hero">
+        <div class="hero__title">
+          <div class="hero__subtitle">Find your Favorite</div>
+          <h1 class="hero__heading">Recipes</h1>
+        </div>
+
+        <a href="#" class="hero__button">Get started</a>
+
+        <p class="hero__note">
+          Or send us your own recipes and <a href="#" class="hero__note-link">get rewarded!</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="features">
+    <div class="container features__inner">
+      <article class="feature">
+        <div class="feature__icon">
+          <img src="./img/icon_hamburger.png" alt="">
+        </div>
+        <h2 class="feature__title">Get inspired</h2>
+        <p class="feature__text">
+          Lorem ipsum dolor sit amet, consectetur adipisc.
+          Pellentesque vel enim a elit viverra elementuma.
+          Aliquam erat volutpat.
+        </p>
+      </article>
+
+      <article class="feature">
+        <div class="feature__icon">
+          <img src="./img/icon_money.png" alt="">
+        </div>
+        <h2 class="feature__title">Get rewarder</h2>
+        <p class="feature__text">
+          Lorem ipsum dolor sit amet, consectetur adipisc.
+          Pellentesque vel enim a elit viverra elementuma.
+          Aliquam erat volutpat.
+        </p>
+      </article>
+
+      <article class="feature">
+        <div class="feature__icon">
+          <img src="./img/icon_cook.png" alt="">
+        </div>
+        <h2 class="feature__title">Get social</h2>
+        <p class="feature__text">
+          Lorem ipsum dolor sit amet, consectetur adipisc.
+          Pellentesque vel enim a elit viverra elementuma.
+          Aliquam erat volutpat.
+        </p>
+      </article>
+    </div>
+  </div>
+
+  <section class="app">
+    <div class="container app__inner">
+      <div class="app__media">
+        <img src="./img/img_smartphone.png" alt="">
+      </div>
+
+      <div class="app__content">
+        <h2 class="section-title section-title--left">Introducing the Fudi App</h2>
+
+        <p class="app__text">
+          Morbi eget posuere dolor. Pellentesque cursus aliquet aliquet. Aeneanet felis sit amet diam mollis
+          ullamcorper. Nullam consequat sem a ante vest ibulum tristique. Suspendisse tristique lacus ac mattis porta.
+        </p>
+        <p class="app__text">
+          Vivamus ligula quam, vehicula non lacinia sed, faucibus sit amet libero. In libero dui, eleifend eu nisi
+          id, egestas fringilla odio. In varius quam a massa hendrerit ullamcorper a eu justo. Suspendisse porta
+          mattis convallis. Aenean tempus ligula ac odio rhoncus, quis aliquam dolor accumsan.
+        </p>
+        <p class="app__text">
+          Suspendisse aliquet felis consectetur libero congue, sed pulvinar diam malesuada. Duis vehicula a nibh id
+          hendrerit. Donec sit amet ultrices ante, a mattis massa.
+        </p>
+
+        <div class="app__stores">
+          <a href="#"><img src="./img/icon_app-store.png" alt="App Store"></a>
+          <a href="#"><img src="./img/icon_google_play.png" alt="Google Play"></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="slider">
+    <input type="radio" name="slider" id="control-1" class="slider__input" checked>
+    <input type="radio" name="slider" id="control-2" class="slider__input">
+    <input type="radio" name="slider" id="control-3" class="slider__input">
+
+    <div class="slider__slides">
+      <div class="slide">
+        <img class="slide__photo" src="./img/img_client-photo-1.png" alt="">
+        <p class="slide__text">
+          "I am so happy because I found this recipe, and it just made my life easier."
+        </p>
+        <p class="slide__author">"Michael Dawson, San Francisco, CA"</p>
+      </div>
+
+      <div class="slide">
+        <img class="slide__photo" src="./img/img_client-photo-1.png" alt="">
+        <p class="slide__text">
+          "I am so happy because I found this recipe, and it just made my life easier. Thanks so much for sharing!"
+        </p>
+        <p class="slide__author">"Michael Dawson, San Francisco, CA"</p>
+      </div>
+
+      <div class="slide">
+        <img class="slide__photo" src="./img/img_client-photo-1.png" alt="">
+        <p class="slide__text">
+          "I am so happy because I found this recipe, and it just made my life easier. Thanks so much for sharing"
+        </p>
+        <p class="slide__author">"Michael Dawson, San Francisco, CA"</p>
+      </div>
+    </div>
+
+    <div class="slider__controls">
+      <label class="slider__control" for="control-1"></label>
+      <label class="slider__control" for="control-2"></label>
+      <label class="slider__control" for="control-3"></label>
+    </div>
+  </div>
+
+  <section class="cuisines">
+    <h2 class="section-title">Browse by cuisines</h2>
+
+    <div class="cuisines__grid">
+      <a href="#" class="cuisines__item"><img src="./img/img_cuisine-italian-320.jpg" alt=""></a>
+      <a href="#" class="cuisines__item"><img src="./img/img_cuisine-indian-320.jpg" alt=""></a>
+      <a href="#" class="cuisines__item"><img src="./img/img_cuisine-french-320.jpg" alt=""></a>
+      <a href="#" class="cuisines__item"><img src="./img/img_cuisine-steakhouse-320.jpg" alt=""></a>
+      <a href="#" class="cuisines__item"><img src="./img/img_cuisine-seafood-320.jpg" alt=""></a>
+      <a href="#" class="cuisines__item"><img src="./img/img_cuisine-sushi-320.jpg" alt=""></a>
+      <a href="#" class="cuisines__item"><img src="./img/img_cuisine-mexican-320.jpg" alt=""></a>
+      <a href="#" class="cuisines__item"><img src="./img/img_cuisine-chinese-320.jpg" alt=""></a>
+      <a href="#" class="cuisines__item"><img src="./img/img_cuisine-pizza-320.jpg" alt=""></a>
+      <a href="#" class="cuisines__item"><img src="./img/img_cuisine-american-320.jpg" alt=""></a>
+    </div>
+
+    <div class="container stats">
+      <div class="stat">
+        <div class="stat__value">23,567</div>
+        <div class="stat__label">Recipes Available</div>
+      </div>
+      <div class="stat">
+        <div class="stat__value">431,729</div>
+        <div class="stat__label">Active Users</div>
+      </div>
+      <div class="stat">
+        <div class="stat__value">892,173</div>
+        <div class="stat__label">Positive Reviews</div>
+      </div>
+      <div class="stat">
+        <div class="stat__value">56,581</div>
+        <div class="stat__label">Photos &amp; Videos</div>
+      </div>
+      <div class="stat">
+        <div class="stat__value">3,182</div>
+        <div class="stat__label">Spices and Herbs</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>©2014 Fudi. All Rights Reserved.</div>
+      <div class="footer__design">
+        Design by: <a href="#">www.bekades.com</a>
+      </div>
+    </div>
+  </footer>
+
+  <div id="perf-banner"
+    style="position:fixed;bottom:0;left:0;right:0;background:#1a1a1a;color:#fff;font:14px/1.4 monospace;padding:10px 16px;z-index:9999;display:flex;gap:24px;flex-wrap:wrap;box-shadow:0 -2px 10px rgba(0,0,0,.3)">
+    <strong style="color:#f57365">Performance</strong>
+    <span>DOMContentLoaded: <b id="perf-dom">…</b></span>
+    <span>load: <b id="perf-load">…</b></span>
+    <span style="opacity:.7;margin-left:auto">Variant: Desktop + LESS (client)</span>
+  </div>
+  <script src="./script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Задание 6 — сравнение производительности</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, sans-serif;
+      max-width: 720px;
+      margin: 40px auto;
+      padding: 0 16px;
+      line-height: 1.5;
+      color: #222;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    h2 {
+      font-size: 1.15rem;
+      margin-top: 2rem;
+    }
+
+    ul {
+      padding-left: 1.2em;
+    }
+
+    a {
+      color: #c45;
+    }
+
+    .card {
+      border: 1px solid #e2e2e2;
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin: 8px 0;
+    }
+
+    .card a {
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .card a:hover {
+      text-decoration: underline;
+    }
+
+    code {
+      background: #f5f5f5;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 1rem 0;
+      font-size: 0.95rem;
+    }
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 8px 10px;
+      text-align: left;
+    }
+
+    th {
+      background: #f7f7f7;
+    }
+
+    .note {
+      background: #fff8f0;
+      border-left: 3px solid #f57365;
+      padding: 10px 14px;
+      margin: 1rem 0;
+    }
+
+    .best {
+      background: #e8f8e8;
+    }
+
+    .worst {
+      background: #fff0f0;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Задание 6: производительность (на базе задания 4)</h1>
+  <p>Четыре варианта одной страницы Fudi для замера <code>DOMContentLoaded</code> и <code>load</code>.</p>
+
+  <h2>Варианты</h2>
+  <div class="card"><a href="./desktop-css/">1. Desktop + CSS</a> — только десктоп, скомпилированный CSS</div>
+  <div class="card"><a href="./adaptive-css/">2. Adaptive + CSS</a> — адаптив, скомпилированный CSS</div>
+  <div class="card"><a href="./desktop-less/">3. Desktop + LESS</a> — только десктоп, клиентский less.js</div>
+  <div class="card"><a href="./adaptive-less/">4. Adaptive + LESS</a> — адаптив, клиентский less.js</div>
+
+  <div class="note">
+    Замеры выполнены локально (Live Server). Значение <code>load</code> через Navigation Timing на локальном сервере
+    часто даёт 0 —
+    поэтому в таблице приведено время <strong>DOMContentLoaded</strong> (формирование DOM-дерева).
+    Для LESS дополнительно зафиксировано время клиентской компиляции из консоли less.js.
+  </div>
+
+  <h2>Таблица результатов</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Вариант</th>
+        <th>DOMContentLoaded, мс</th>
+        <th>Компиляция LESS, мс</th>
+        <th>Примечание</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="best">
+        <td>1. Desktop + CSS</td>
+        <td><strong>95.4</strong></td>
+        <td>—</td>
+        <td>Самый быстрый вариант</td>
+      </tr>
+      <tr>
+        <td>2. Adaptive + CSS</td>
+        <td><strong>140.8</strong></td>
+        <td>—</td>
+        <td>+45&nbsp;мс к десктопу из‑за медиазапросов и большего CSS</td>
+      </tr>
+      <tr class="worst">
+        <td>3. Desktop + LESS (client)</td>
+        <td><strong>209.6</strong></td>
+        <td>35</td>
+        <td>Самый медленный: загрузка less.js + компиляция</td>
+      </tr>
+      <tr>
+        <td>4. Adaptive + LESS (client)</td>
+        <td><strong>140.1</strong></td>
+        <td>46</td>
+        <td>less.js уже в кэше CDN после предыдущего замера</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Выводы</h2>
+  <ul>
+    <li>
+      <strong>Влияние адаптивной вёрстки (медиазапросы).</strong>
+      Адаптивная версия с готовым CSS формирует DOM дольше десктопной
+      (140.8&nbsp;мс против 95.4&nbsp;мс, разница ≈&nbsp;45&nbsp;мс).
+      Причина — больший объём CSS и дополнительные правила <code>@media</code>, которые браузер разбирает при построении
+      CSSOM.
+      Влияние есть, но оно умеренное.
+    </li>
+    <li>
+      <strong>Влияние клиентского препроцессора (less.js).</strong>
+      Подключение LESS на стороне клиента заметно замедляет страницу.
+      Десктоп + LESS: 209.6&nbsp;мс против 95.4&nbsp;мс у готового CSS (примерно в 2 раза медленнее).
+      В консоли less.js фиксирует 35–46&nbsp;мс на саму компиляцию; остальное — загрузка библиотеки less.js с CDN и
+      применение стилей.
+      Если less.js уже в кэше (как в замере adaptive-less), разница с готовым CSS почти исчезает.
+    </li>
+    <li>
+      <strong>Общий вывод о производительности интерфейса.</strong>
+      Для продакшена стили нужно компилировать заранее (build-step) и отдавать готовый CSS —
+      клиентский препроцессор увеличивает время до интерактивности и зависит от сети/кэша.
+      Адаптивная вёрстка даёт небольшой, но измеримый оверхед по сравнению с чисто десктопной.
+      Оптимальный вариант с точки зрения скорости: <em>скомпилированный CSS</em>;
+      наличие медиазапросов приемлемо, клиентский LESS — нет.
+    </li>
+  </ul>
+</body>
+
+</html>
